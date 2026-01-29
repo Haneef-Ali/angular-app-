@@ -24,10 +24,8 @@ jobs:
         run: npm run build
         working-directory: angular-app
 
-        -name: Build on artifacts
-         uses: actions/upload-artifact@v6.0.0
-         with:
-         -name: Build next-js
-          path: out/
-         
-         
+      - name: Build on artifacts
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: angular-build
+          path: angular-app/dist/
