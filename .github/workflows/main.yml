@@ -10,14 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: check-spelling/checkout-merge@v0.0.7
       - name: Setup Node js
         uses: actions/setup-node@v6.2.0
         with: 
           node-version: 22.x
+          cache: 'npm'
+          
       - name: Install dependencies
         run: npm install
         working-directory: angular-app
+        
       - name: Build Angular App
         run: npm run build
         working-directory: angular-app
+
+        -name: Build on artifacts
+         uses: actions/upload-artifact@v6.0.0
+         with:
+         -name: Build next-js
+          path: out/
+         
+         
