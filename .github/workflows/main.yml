@@ -1,0 +1,22 @@
+name: Build my Angular app
+
+on: 
+  push:
+     branches:
+       - main
+
+jobs:
+  build-angular-app:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: check-spelling/checkout-merge@v0.0.7
+      - name: Setup Node js
+        uses: actions/setup-node@v6.2.0
+        with: 
+          node-version: 22.x
+      - name: Install dependency
+        run: npm install
+      - name: Build Angular App
+        run: npm run build
+      
